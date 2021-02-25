@@ -26,7 +26,7 @@ function shouldInstallPackages
 {
     tput setaf 1
     echo "Your package list did not include a recommended base package"
-    tput sgr0 
+    tput sgr0
     echo "Please include one of the following:"
     echo "   ros-kinetic-ros-base"
     echo "   ros-kinetic-desktop"
@@ -103,7 +103,7 @@ tput sgr0
 # Here we loop through any packages passed on the command line
 # Install packages ...
 for package in "${packages[@]}"; do
-  sudo apt-get install $package -y
+  sudo apt-get install $package -y --allow-unauthenticated
 done
 
 # Add Individual Packages here
@@ -114,12 +114,12 @@ done
 #
 # To find available packages:
 # apt-cache search ros-kinetic
-# 
+#
 # Initialize rosdep
 tput setaf 2
 echo "Installing rosdep"
 tput sgr0
-sudo apt-get install python-rosdep -y
+sudo apt-get install python-rosdep -y --allow-unauthenticated
 # Certificates are messed up on the Jetson for some reason
 sudo c_rehash /etc/ssl/certs
 # Initialize rosdep
@@ -136,7 +136,7 @@ source ~/.bashrc
 tput setaf 2
 echo "Installing rosinstall tools"
 tput sgr0
-sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential -y
+sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential -y --allow-unauthenticated
 tput setaf 2
 echo "Installation complete!"
 tput sgr0
